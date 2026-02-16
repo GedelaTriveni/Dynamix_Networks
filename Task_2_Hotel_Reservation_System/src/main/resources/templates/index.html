@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Hotel Reservation</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+<div>Hotel Reservation</div>
+<div>
+<a href="/">Home</a>
+<a href="/admin">Admin</a>
+<a href="/bookings">Bookings</a>
+</div>
+</div>
+
+<div class="hero">
+<div class="hero-text">
+<h1>Welcome to Our Hotel</h1>
+<p>Book Your Dream Room Today</p>
+</div>
+</div>
+
+<h2 style="text-align:center;">Available Rooms</h2>
+
+<div class="room-container">
+
+<div class="card" th:each="room, stat : ${rooms}">
+<img th:src="@{'/images/room' + (${stat.index}%3 + 1) + '.jpg'}">
+
+<h3 th:text="${room.type}"></h3>
+<p>Price: ₹ <span th:text="${room.price}"></span></p>
+
+<a th:href="@{/book/{id}(id=${room.id})}">
+<button>Book Now</button>
+</a>
+
+</div>
+
+</div>
+
+<div class="lobby">
+<div class="lobby-text">
+<h2>Luxury Lobby Experience</h2>
+</div>
+</div>
+
+</body>
+</html>

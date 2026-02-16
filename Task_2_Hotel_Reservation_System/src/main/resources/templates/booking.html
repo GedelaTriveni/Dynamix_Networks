@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+<div>Hotel Reservation</div>
+<div>
+<a href="/">Home</a>
+</div>
+</div>
+
+<div class="hero">
+<h1>Book Your Room</h1>
+</div>
+
+<div class="form-box">
+
+<form action="/confirmBooking" method="post">
+
+<input type="hidden" name="roomId" th:value="${roomId}">
+
+<input name="name" placeholder="Enter Name"><br><br>
+<input name="phone" placeholder="Enter Phone"><br><br>
+<input name="email" placeholder="Enter Email"><br><br>
+
+<button>Confirm Booking</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

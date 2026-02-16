@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div class="navbar">
+<div>Hotel Reservation</div>
+<div>
+<a href="/">Home</a>
+</div>
+</div>
+
+<h2 style="text-align:center;">Booking Report</h2>
+
+<div class="room-container">
+
+<div class="card" th:each="b, stat : ${bookings}">
+<img th:src="@{'/images/room' + (${stat.index}%3 + 1) + '.jpg'}">
+
+<h3 th:text="${b.customerName}"></h3>
+<p>Room ID: <span th:text="${b.roomId}"></span></p>
+
+<a th:href="@{/cancel/{id}(id=${b.id})}">
+<button>Cancel</button>
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

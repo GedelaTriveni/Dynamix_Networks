@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Admin Panel</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="admin-body">
+
+
+<!-- NAVBAR -->
+<div class="navbar">
+<div>Admin Dashboard</div>
+<div>
+<a href="/">Home</a>
+<a href="/bookings">Bookings</a>
+</div>
+</div>
+
+<h1 style="text-align:center; margin-top:30px;">
+Admin Dashboard
+</h1>
+
+
+<!-- FORM CARD -->
+<div class="admin-card">
+
+<h2>Add New Room</h2>
+
+<form action="/addRoom" method="post">
+
+<input name="type" placeholder="Room Type" required>
+<input name="price" placeholder="Price" required>
+
+<button>Add Room</button>
+
+</form>
+
+</div>
+
+<!-- TABLE CARD -->
+<div class="admin-table">
+
+<h2>All Rooms</h2>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Type</th>
+<th>Price</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tr th:each="room : ${rooms}">
+<td th:text="${room.id}"></td>
+<td th:text="${room.type}"></td>
+<td th:text="${room.price}"></td>
+<td th:text="${room.status}"></td>
+<td>
+<a th:href="@{/delete/{id}(id=${room.id})}">
+<button>Delete</button>
+</a>
+</td>
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>
