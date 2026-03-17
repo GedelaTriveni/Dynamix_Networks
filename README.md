@@ -65,3 +65,35 @@ AI-Powered Resume Analyzer is a Java-based application that scans candidate resu
 4. Matches skills with job requirements
 5. Generates a job match score
 
+# 📌 Task 4 :📰 News Authenticity Verifier
+
+The **News Authenticity Verifier** is a web-based application built using **Spring Boot** that detects and flags fake or misleading news articles.  
+It uses basic **NLP techniques**, **news scraping**, and **source credibility scoring** to classify news as real or fake.
+
+## 🚀 Features
+
+- 🔍 **Text Classification (Fake vs Real)**  
+  Classifies user-input news text into:
+  - ✅ Real News  
+  - ⚠️ Fake News  
+
+- 🌐 **News Scraping**  
+  Extracts news titles from URLs using **JSoup**
+
+- 📊 **Source Credibility Score**  
+  Assigns a credibility score (0–100%) based on source reliability
+
+- ✔️ **Fact Check Module**  
+  Performs basic validation using trusted keywords  
+  *(API-ready for future integration)*
+
+## 🛠️ Technologies Used
+
+- **Java**
+- **Spring Boot**
+- **HTML, CSS, JavaScript**
+- **JSoup**
+- **Maven**
+
+
+
