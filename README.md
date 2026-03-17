@@ -37,3 +37,31 @@ The Hotel Reservation System is designed to manage hotel room bookings efficient
 - Swing / JavaFX
 - File Handling
 - Console-based Programming
+
+# 📌 Task 3: AI-Powered Resume Analyzer
+
+AI-Powered Resume Analyzer is a Java-based application that scans candidate resumes (PDF/DOCX), extracts relevant keywords, and matches them with a job description to calculate a job match score.
+
+## 🚀 Features
+
+* Resume text extraction using Apache POI / PDFBox
+* Keyword and skill matching
+* Job match scoring using TF-IDF / Cosine Similarity
+* Dashboard for HR recruiters
+* Export analysis report as PDF
+
+## 🛠️ Tech Stack
+
+* Java
+* Apache POI / PDFBox
+* (Optional) MySQL
+* HTML, CSS, JavaScript (for web version)
+
+## How It Works
+
+1. Upload resume (PDF/DOCX)
+2. Provide job description
+3. System extracts keywords
+4. Matches skills with job requirements
+5. Generates a job match score
+
