@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>News Authenticity Verifier</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #eef2f3, #dfe9f3);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 450px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        textarea, input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 12px;
+            background: linear-gradient(45deg, #007bff, #00c6ff);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        p {
+            margin-top: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>📰 News Authenticity Verifier</h1>
+
+<div class="container">
+
+    <!-- 🔹 Verify News -->
+    <div class="card">
+        <h3>Check News Authenticity</h3>
+        <textarea id="text" placeholder="Enter news text..."></textarea><br>
+        <button onclick="verify()">Verify</button>
+        <p id="result"></p>
+    </div>
+
+    <!-- 🔹 Scrape News -->
+    <div class="card">
+        <h3>Scrape News Title</h3>
+        <input type="text" id="url" placeholder="Enter news URL"><br>
+        <button onclick="scrape()">Scrape</button>
+        <p id="scrapeResult"></p>
+    </div>
+
+    <!-- 🔹 Credibility Score -->
+    <div class="card">
+        <h3>Source Credibility Score</h3>
+        <input type="text" id="scoreUrl" placeholder="Enter source URL"><br>
+        <button onclick="score()">Check Score</button>
+        <p id="scoreResult"></p>
+    </div>
+
+    <!-- 🔹 Fact Check -->
+    <div class="card">
+        <h3>Fact Check</h3>
+        <input type="text" id="factText" placeholder="Enter news for fact check"><br>
+        <button onclick="factCheck()">Fact Check</button>
+        <p id="factResult"></p>
+    </div>
+
+</div>
+
+<script>
+
+    // 🔹 Verify Fake or Real
+    function verify() {
+        const text = document.getElementById("text").value;
+
+        fetch('/news/check', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ text: text })
+        })
+        .then(res => res.text())
+        .then(data => {
+            const result = document.getElementById("result");
+            result.innerText = data;
+
+            if(data.includes("Real")){
+                result.style.color = "green";
+            } else {
+                result.style.color = "red";
+            }
+        })
+        .catch(() => {
+            document.getElementById("result").innerText = "Error!";
+        });
+    }
+
+    // 🔹 Scrape News Title
+    function scrape() {
+        const url = document.getElementById("url").value;
+
+        fetch('/news/scrape?url=' + encodeURIComponent(url))
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("scrapeResult").innerText = data;
+        })
+        .catch(() => {
+            document.getElementById("scrapeResult").innerText = "Error!";
+        });
+    }
+
+    // 🔹 Credibility Score
+    function score() {
+        const url = document.getElementById("scoreUrl").value;
+
+        fetch('/news/score?url=' + encodeURIComponent(url))
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("scoreResult").innerText = "Score: " + data + "%";
+        })
+        .catch(() => {
+            document.getElementById("scoreResult").innerText = "Error!";
+        });
+    }
+
+    // 🔹 Fact Check
+    function factCheck() {
+        const text = document.getElementById("factText").value;
+
+        fetch('/news/factcheck?text=' + encodeURIComponent(text))
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("factResult").innerText = data;
+        })
+        .catch(() => {
+            document.getElementById("factResult").innerText = "Error!";
+        });
+    }
+
+</script>
+
+</body>
+</html>
