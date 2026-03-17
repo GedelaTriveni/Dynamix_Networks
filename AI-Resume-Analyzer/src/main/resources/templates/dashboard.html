@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>AI Resume Analyzer</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f6f9;
+text-align:center;
+margin-top:80px;
+}
+
+.container{
+width:500px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px;
+}
+
+button{
+background:#2c7be5;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AI Resume Analyzer</h1>
+
+<form action="/analyze" method="post" enctype="multipart/form-data">
+
+<label>Upload Resume</label><br> <input type="file" name="resume"><br>
+
+<label>Job Description</label><br> <input type="text" name="jobDescription"><br>
+
+<button type="submit">Analyze Resume</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
